@@ -1,6 +1,6 @@
-package com.atec.modeldto;
+package com.atec.dto;
 
-public class EmployeeDto {
+public class EmployeeDTO {
 
     private Long id;
     private String firstName;

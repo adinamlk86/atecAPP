@@ -1,11 +1,11 @@
-package com.atec.modeldto;
+package com.atec.dto;
 
 import com.atec.model.Employee;
 import com.atec.model.Notice;
 
 import java.util.Date;
 
-public class InterventionDto {
+public class InterventionDTO {
 
     private Long id;
     private Date registerDate;
