@@ -1,6 +1,6 @@
-package com.atec.modeldto;
+package com.atec.dto;
 
-public class EquipmentDto {
+public class EquipmentDTO {
 
     private Long id;
     private String type;
