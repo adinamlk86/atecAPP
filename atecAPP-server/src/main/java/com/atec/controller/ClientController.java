@@ -17,17 +17,17 @@ import com.atec.service.ClientService;
 @RequestMapping(value="/api/clients")
 public class ClientController {
 
+	@SuppressWarnings({"UnusedDeclaration"})
 	@Autowired
 	private ClientService clientService;
-	
-	//@CrossOrigin(origins = "http://localhost:9090")
+
 	@GetMapping(value="/all")
-	public ResponseEntity<List<ClientDTO>> getQuestions(){
+	public ResponseEntity<List<ClientDTO>> getClients(){
 		
 		List<ClientDTO> clients = clientService.getAll();
 		if(clients.isEmpty()){
-	       return new ResponseEntity<List<ClientDTO>>(HttpStatus.NO_CONTENT);
+	       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	    }
-		return new ResponseEntity<List<ClientDTO>>(clients, HttpStatus.OK);
+		return new ResponseEntity<>(clients, HttpStatus.OK);
 	}
 }
