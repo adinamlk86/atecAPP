@@ -17,17 +17,17 @@ import java.util.List;
 @RequestMapping(value="/api/notice")
 public class NoticeController {
 
+	@SuppressWarnings({"UnusedDeclaration"})
 	@Autowired
 	private NoticeService noticeService;
-	
-	//@CrossOrigin(origins = "http://localhost:9090")
+
 	@GetMapping(value="/all")
-	public ResponseEntity<List<NoticeDTO>> getQuestions(){
+	public ResponseEntity<List<NoticeDTO>> geNotices(){
 		
 		List<NoticeDTO> notices = noticeService.getAll();
 		if(notices.isEmpty()){
-	       return new ResponseEntity<List<NoticeDTO>>(HttpStatus.NO_CONTENT);
+	       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	    }
-		return new ResponseEntity<List<NoticeDTO>>(notices, HttpStatus.OK);
+		return new ResponseEntity<>(notices, HttpStatus.OK);
 	}
 }

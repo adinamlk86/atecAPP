@@ -14,7 +14,7 @@ import com.atec.service.ClientService;
 
 
 @RestController
-@RequestMapping(value="/api/clients")
+@RequestMapping(value="/api/client")
 public class ClientController {
 
 	@SuppressWarnings({"UnusedDeclaration"})

@@ -17,17 +17,17 @@ import java.util.List;
 @RequestMapping(value="/api/intervention")
 public class InterventionController {
 
+	@SuppressWarnings({"UnusedDeclaration"})
 	@Autowired
 	private InterventionService interventionService;
-	
-	//@CrossOrigin(origins = "http://localhost:9090")
+
 	@GetMapping(value="/all")
-	public ResponseEntity<List<InterventionDTO>> getQuestions(){
+	public ResponseEntity<List<InterventionDTO>> getInterventions(){
 		
 		List<InterventionDTO> interventions = interventionService.getAll();
 		if(interventions.isEmpty()){
-	       return new ResponseEntity<List<InterventionDTO>>(HttpStatus.NO_CONTENT);
+	       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	    }
-		return new ResponseEntity<List<InterventionDTO>>(interventions, HttpStatus.OK);
+		return new ResponseEntity<>(interventions, HttpStatus.OK);
 	}
 }

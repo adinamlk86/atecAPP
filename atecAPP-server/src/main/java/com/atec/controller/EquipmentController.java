@@ -17,17 +17,17 @@ import java.util.List;
 @RequestMapping(value="/api/equipment")
 public class EquipmentController {
 
+	@SuppressWarnings({"UnusedDeclaration"})
 	@Autowired
 	private EquipmentService equipmentService;
-	
-	//@CrossOrigin(origins = "http://localhost:9090")
+
 	@GetMapping(value="/all")
-	public ResponseEntity<List<EquipmentDTO>> getQuestions(){
+	public ResponseEntity<List<EquipmentDTO>> getEquipments(){
 		
 		List<EquipmentDTO> equipmentDTOList = equipmentService.getAll();
 		if(equipmentDTOList.isEmpty()){
-	       return new ResponseEntity<List<EquipmentDTO>>(HttpStatus.NO_CONTENT);
+	       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	    }
-		return new ResponseEntity<List<EquipmentDTO>>(equipmentDTOList, HttpStatus.OK);
+		return new ResponseEntity<>(equipmentDTOList, HttpStatus.OK);
 	}
 }

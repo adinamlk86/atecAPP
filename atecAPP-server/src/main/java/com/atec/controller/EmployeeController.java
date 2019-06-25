@@ -14,20 +14,20 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(value="/api/employees")
+@RequestMapping(value="/api/employee")
 public class EmployeeController {
 
+	@SuppressWarnings({"UnusedDeclaration"})
 	@Autowired
 	private EmployeeService employeeService;
-	
-	//@CrossOrigin(origins = "http://localhost:9090")
+
 	@GetMapping(value="/all")
-	public ResponseEntity<List<EmployeeDTO>> getQuestions(){
+	public ResponseEntity<List<EmployeeDTO>> getEmployees(){
 		
 		List<EmployeeDTO> employees = employeeService.getAll();
 		if(employees.isEmpty()){
-	       return new ResponseEntity<List<EmployeeDTO>>(HttpStatus.NO_CONTENT);
+	       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	    }
-		return new ResponseEntity<List<EmployeeDTO>>(employees, HttpStatus.OK);
+		return new ResponseEntity<>(employees, HttpStatus.OK);
 	}
 }
