@@ -10,7 +10,7 @@ import com.atec.model.Client;
 @Mapper(componentModel = "spring", uses = {})
 public interface ClientMapper {
 
-	ClientDTO toClientDTO(Client client);
+    ClientDTO toClientDTO(Client client);
 
     List<ClientDTO> toClientDTOs(List<Client> clients);
 
