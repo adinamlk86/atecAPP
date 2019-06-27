@@ -3,32 +3,46 @@
   <div class="row" style="margin-top:12px;">
     <div class="col-md-8">
       <input type="text"
+
              class="form-control"
              style="width: 100%;"
              placeholder="Search clients...">
     </div>
-    <div class="col-md-4">
-      <button type="buton"
-              class="btn btn-info pull-right"
-              style="margin-left:12px;"><i class="fa fa-plus"></i> New client
-      </button>
 
-    </div>
 
   </div>
 
   <!-- Client content -->
   <div class="row" style="margin-top: 28px;">
-
+    <div class="col-md-3">
+      <br>
       <div class="list-group list-group-flush">
+        <a (click)="getAllClients()" class="list-group-item list-group-item-action">
+          <i class="fas fa-folder"></i>&nbsp;All
+        </a>
         <!-- Client List -->
-
+                                  <!--(click)="selectClient(client)"-->
         <a *ngFor="let client of clients" class="list-group-item list-group-item-action">
-          <i class="fa fa-book"></i>&nbsp;{{client.name}}
+          <i class="fas"></i>&nbsp;
+          <input [(ngModel)]="client.name" (change)="updateClient(client)" type="text" class="input-label" style="width: 80%"/>
+          <a (click)="deleteClient(client)" class="pull-right text-danger">
+            <i class="fas fa-trash-alt"></i>
+          </a>
         </a>
 
       </div>
+      <br>
+      <br>
+      <br>
+      <div class="col-md-4">
+        <button type="buton"
+                (click)="createClient()"
+                class="btn btn-info pull-left"
+                style="margin-left:12px;"><i class="fa fa-plus"></i> New client
+        </button>
 
+      </div>
+    </div>
 
     <!-- Client Panel -->
     <div class="col-md-9">
