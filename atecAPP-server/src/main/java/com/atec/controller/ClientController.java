@@ -1,16 +1,15 @@
 package com.atec.controller;
 
-import java.util.List;
-
+import com.atec.dto.ClientDTO;
+import com.atec.mapper.ClientMapper;
+import com.atec.model.Client;
+import com.atec.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.atec.dto.ClientDTO;
-import com.atec.service.ClientService;
+import java.util.List;
 
 
 @RestController
@@ -29,5 +28,20 @@ public class ClientController {
 	       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	    }
 		return new ResponseEntity<>(clients, HttpStatus.OK);
+	}
+
+	@GetMapping("/{id}")
+	public Client getClientById(@PathVariable(required = true) Long id){
+		return clientService.getClientById(id);
+	}
+
+	@PostMapping
+	public void postClient(@RequestBody ClientDTO clientDTO) {
+		clientService.add(clientDTO);
+	}
+
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable(required = true) Long id) {
+		clientService.delete(id);
 	}
 }
