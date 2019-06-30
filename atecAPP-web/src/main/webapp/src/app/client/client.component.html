@@ -21,10 +21,11 @@
           <i class="fas fa-folder"></i>&nbsp;All
         </a>
         <!-- Client List -->
-                                  <!--(click)="selectClient(client)"-->
-        <a *ngFor="let client of clients" class="list-group-item list-group-item-action">
+
+        <a *ngFor="let client of clients" (click)="selectClient(client)" class="list-group-item list-group-item-action">
           <i class="fas"></i>&nbsp;
-          <input [(ngModel)]="client.name" (change)="updateClient(client)" type="text" class="input-label" style="width: 80%"/>
+          <input [(ngModel)]="client.name" (change)="updateClient(client)" type="text" class="input-label"
+                 style="width: 80%"/>
           <a (click)="deleteClient(client)" class="pull-right text-danger">
             <i class="fas fa-trash-alt"></i>
           </a>
@@ -40,20 +41,48 @@
                 class="btn btn-info pull-left"
                 style="margin-left:12px;"><i class="fa fa-plus"></i> New client
         </button>
+        <button type="buton"
+                (click)="createEquipment()"
+                class="btn btn-primary pull-left"
+                style="margin-left:12px;"><i class="fa fa-plus"></i> New equipment
+        </button>
 
       </div>
     </div>
 
-    <!-- Client Panel -->
+    <!-- Equipment Panel -->
     <div class="col-md-9">
       <div class="row">
         <div class="col-md-12">
-          <!-- Message if there are no clients -->
-
+          <!-- Message if equipment list is empty -->
+          <p *ngIf="this.equipmentList.length===0">There are no equipments.</p>
         </div>
       </div>
       <div class="row">
-        <!-- Equipment list -->
+
+        <div *ngFor="let equipment of equipmentList" class="card bg-warning" style="border:4px solid white;">
+          <div class="card-body" style="padding: 8px; margin-top: 8px;">
+            <div>
+              <!-- title -->
+              <input type="text"
+                     [(ngModel)]="equipment.model"
+                     (change)="updateEquipment(equipment)"
+                     class="input-label-lg"
+                     maxlength="18" style="width: 80%"
+              />
+              <a (click)="deleteEquipment(equipment)" class="pull-right text-danger">
+                <i class="fas fa-trash-alt"></i>
+              </a>
+            </div>
+            <!-- text -->
+            <textarea class="input-label"
+                      style="width: 100%" rows="6"
+                      [(ngModel)]="equipment.type"
+                      [(ngModel)]="equipment.brand"
+                      [(ngModel)]="equipment.code"
+                      (change)="updateEquipment()"></textarea>
+          </div>
+        </div>
 
       </div>
     </div>
