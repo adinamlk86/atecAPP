@@ -1,5 +1,9 @@
 package com.atec.dto;
 
+import com.atec.model.Equipment;
+
+import java.util.List;
+
 public class ClientDTO {
 
 	private Long id;
@@ -15,6 +19,8 @@ public class ClientDTO {
 	private String bank;
 
 	private String iban;
+
+	private List<Equipment> equipmentList;
 
 	public Long getId() {
 		return id;
@@ -72,4 +78,11 @@ public class ClientDTO {
 		this.iban = iban;
 	}
 
+	public List<Equipment> getEquipmentList() {
+		return equipmentList;
+	}
+
+	public void setEquipmentList(List<Equipment> equipmentList) {
+		this.equipmentList = equipmentList;
+	}
 }

@@ -7,4 +7,5 @@ export interface Client {
   address:string;
   bank:string;
   iban:string;
+  noOfEquipment:number;
 }
