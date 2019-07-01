@@ -43,7 +43,8 @@ export class ClientComponent implements OnInit {
       registrationCode: null,
       address: null,
       bank: null,
-      iban: null
+      iban: null,
+      noOfEquipment:0
     };
 
     this.clientService.postClient(newClient).subscribe(
@@ -55,6 +56,7 @@ export class ClientComponent implements OnInit {
         newClient.registrationCode = result.registrationCode;
         newClient.bank = result.bank;
         newClient.iban = result.iban;
+
 
         this.clients.push(newClient);
       },
@@ -93,9 +95,9 @@ export class ClientComponent implements OnInit {
   selectClient(client: Client) {
 
     this.selectedClient = client;
-    this.clientService.getClientById(client.id).subscribe(
+    this.clientService.getEquipmentByClient(client.id).subscribe(
       result => {
-        this.clients = result;
+        this.equipmentList = result;
       },
       error => {
         alert("An error has occurred while selecting client.")
@@ -117,13 +119,14 @@ export class ClientComponent implements OnInit {
   }
 
 
-  createEquipment(){
+  createEquipment(clientId: bigint){
     let newEquipment: Equipment = {
-      id:null,
-      type:null,
-    brand:"KM",
-    model:"bizhub",
-    code:null
+      id: null,
+      type: null,
+      brand: "KM",
+      model: "bizhub",
+      code: null,
+      clientId: clientId
     };
 
     this.clientService.saveEquipment(newEquipment).subscribe(
@@ -133,6 +136,7 @@ export class ClientComponent implements OnInit {
         newEquipment.brand=result.brand;
         newEquipment.model=result.model;
         newEquipment.code=result.code;
+        newEquipment.clientId=result.clientId;
 
         this.equipmentList.push(newEquipment);
       },
@@ -166,5 +170,10 @@ export class ClientComponent implements OnInit {
       }
     );
 
+  }
+
+  selectAllEquipment(){
+    this.selectedClient = null;
+    this.getAllEquipment();
   }
 }

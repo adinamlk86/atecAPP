@@ -36,6 +36,8 @@ public class EquipmentController {
 		return equipmentService.getEquipmentById(id);
 	}
 
+
+
 	@PostMapping
 	public void postEquipment(@RequestBody EquipmentDTO equipmentDTO) {
 		equipmentService.add(equipmentDTO);

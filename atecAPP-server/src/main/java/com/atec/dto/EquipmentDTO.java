@@ -1,5 +1,7 @@
 package com.atec.dto;
 
+import com.atec.model.Client;
+
 public class EquipmentDTO {
 
     private Long id;
@@ -7,6 +9,7 @@ public class EquipmentDTO {
     private String brand;
     private String model;
     private String code;
+    private Client client;
 
     public Long getId() {
         return id;
@@ -46,5 +49,13 @@ public class EquipmentDTO {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }

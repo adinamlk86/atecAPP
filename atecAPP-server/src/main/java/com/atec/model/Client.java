@@ -1,6 +1,9 @@
 package com.atec.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Client {
@@ -29,6 +32,10 @@ public class Client {
 
     @Column(name="iban")
     private String iban;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "client", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Equipment> equipmentList;
 
     public Long getId() {
         return id;
@@ -84,5 +91,13 @@ public class Client {
 
     public void setIban(String iban) {
         this.iban = iban;
+    }
+
+    public List<Equipment> getEquipmentList() {
+        return equipmentList;
+    }
+
+    public void setEquipmentList(List<Equipment> equipmentList) {
+        this.equipmentList = equipmentList;
     }
 }

@@ -24,6 +24,9 @@ public class Equipment {
     @Column(name="code")
     private String code;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Client client;
+
     public Long getId() {
         return id;
     }
@@ -62,5 +65,13 @@ public class Equipment {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }

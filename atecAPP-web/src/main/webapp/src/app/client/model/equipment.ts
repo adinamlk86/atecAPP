@@ -5,5 +5,6 @@ export interface Equipment {
   brand:string;
   model:string;
   code:string;
+  clientId:bigint;
 
 }

@@ -13,7 +13,7 @@ export class ClientService {
   private ALL_CLIENTS_URL = `${this.BASE_URL}/client/all`;
   private SAVE_CLIENTS_URL = `${this.BASE_URL}/client`;
   private DELETE_CLIENTS_URL = `${this.BASE_URL}/client/`;
-  private CLIENT_BY_ID_URL = `${this.BASE_URL}/client/id`;
+  private EQUIPMENT_BY_CLIENT_URL = `${this.BASE_URL}/client/`;
   private ALL_EQUIPMENT_URL = `${this.BASE_URL}/equipment/all`;
   private SAVE_EQUIPMENT_URL = `${this.BASE_URL}/equipment`;
   private DELETE_EQUIPMENT_URL = `${this.BASE_URL}/equipment/`;
@@ -34,8 +34,8 @@ export class ClientService {
     return this.http.delete(this.DELETE_CLIENTS_URL + id);
   }
 
-  getClientById(id: bigint): Observable<Client[]> {
-    return this.http.get<Client[]>(this.CLIENT_BY_ID_URL + id);
+  getEquipmentByClient(id: bigint): Observable<Equipment[]> {
+    return this.http.get<Equipment[]>(this.EQUIPMENT_BY_CLIENT_URL + id);
   }
 
   getAllEquipment(): Observable<Equipment[]>{
