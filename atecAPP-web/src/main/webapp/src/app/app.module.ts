@@ -7,6 +7,8 @@ import {ClientComponent} from './client/client.component';
 import {NavigationComponent} from './navigation/navigation.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {FormsModule} from "@angular/forms";
+import { EquipmentComponent } from './client/equipment/equipment.component';
+import { ClientTextFilterPipe } from './pipe/client-text-filter.pipe';
 
 
 @NgModule({
@@ -14,6 +16,8 @@ import {FormsModule} from "@angular/forms";
     AppComponent,
     ClientComponent,
     NavigationComponent,
+    EquipmentComponent,
+    ClientTextFilterPipe,
 
 
   ],

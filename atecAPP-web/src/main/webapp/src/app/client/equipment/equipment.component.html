@@ -1,0 +1,34 @@
+<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+  <!--equipment card header-->
+  <div class="card-header">
+    <input type="text"
+           [(ngModel)]="equipment.model"
+           (change)="updateEquipment()"
+           class="input-label-lg"
+           maxlength="18" style="width: 80%"/>
+    <a (click)="deleteEquipment()" class="pull-right text-danger">
+      <i class="fas fa-trash-alt"></i>
+    </a>
+  </div>
+  <div class="card-body" style="padding: 8px; margin-top: 8px;">
+    <div>
+      <!-- title -->
+      <input type="text"
+             [(ngModel)]="equipment.brand"
+             (change)="updateEquipment()"
+             class="input-label-lg"
+             maxlength="18" style="width: 80%"
+      />
+
+    </div>
+    <!-- text -->
+    <textarea class="input-label"
+              style="width: 100%" rows="1"
+              [(ngModel)]="equipment.type"
+              (change)="updateEquipment(equipment)"></textarea>
+    <textarea class="input-label"
+              style="width: 100%" rows="1"
+              [(ngModel)]="equipment.code"
+              (change)="updateEquipment(equipment)"></textarea>
+  </div>
+</div>
