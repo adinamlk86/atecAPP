@@ -6,7 +6,12 @@ const routes: Routes = [
   {
     path: 'client',
     component: ClientComponent
-  }
+  },
+    {
+      path:'equipment',
+      component: ClientComponent,
+      pathMatch: 'full'
+    }
 ]
 ;
 

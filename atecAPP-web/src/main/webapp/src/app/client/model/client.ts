@@ -1,3 +1,5 @@
+import {Equipment} from "./equipment";
+
 export interface Client {
 
   id:bigint;
@@ -7,5 +9,6 @@ export interface Client {
   address:string;
   bank:string;
   iban:string;
-  noOfEquipment:number;
+  noOfEquipment:bigint;
+  equipmentList: Array<Equipment>;
 }

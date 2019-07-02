@@ -37,6 +37,9 @@ public class Client {
     @JsonIgnore
     private List<Equipment> equipmentList;
 
+    @Column(name="noOfEquipment")
+    private Long noOfEquipment;
+
     public Long getId() {
         return id;
     }
@@ -97,7 +100,16 @@ public class Client {
         return equipmentList;
     }
 
+
     public void setEquipmentList(List<Equipment> equipmentList) {
         this.equipmentList = equipmentList;
+    }
+
+    public Long getNoOfEquipment() {
+        return noOfEquipment;
+    }
+
+    public void setNoOfEquipment(Long noOfEquipment) {
+        this.noOfEquipment = noOfEquipment;
     }
 }

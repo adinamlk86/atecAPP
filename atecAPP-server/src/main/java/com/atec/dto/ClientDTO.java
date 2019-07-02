@@ -22,6 +22,8 @@ public class ClientDTO {
 
 	private List<Equipment> equipmentList;
 
+	private Long noOfEquipment;
+
 	public Long getId() {
 		return id;
 	}
@@ -84,5 +86,13 @@ public class ClientDTO {
 
 	public void setEquipmentList(List<Equipment> equipmentList) {
 		this.equipmentList = equipmentList;
+	}
+
+	public Long getNoOfEquipment() {
+		return noOfEquipment;
+	}
+
+	public void setNoOfEquipment(Long noOfEquipment) {
+		this.noOfEquipment = noOfEquipment;
 	}
 }

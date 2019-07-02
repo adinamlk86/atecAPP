@@ -39,24 +39,18 @@ export class ClientComponent implements OnInit {
     let newClient: Client = {
       id: null,
       name: 'new client',
-      vatCode: null,
-      registrationCode: null,
-      address: null,
-      bank: null,
-      iban: null,
-      noOfEquipment:0
+      vatCode: 'vat code',
+      registrationCode: 'reg code',
+      address: 'address',
+      bank: 'bank',
+      iban: 'account no',
+      noOfEquipment:null,
+      equipmentList: null
     };
 
     this.clientService.postClient(newClient).subscribe(
       result => {
         newClient.id = result.id;
-        newClient.name = result.name;
-        newClient.address = result.address;
-        newClient.vatCode = result.vatCode;
-        newClient.registrationCode = result.registrationCode;
-        newClient.bank = result.bank;
-        newClient.iban = result.iban;
-
 
         this.clients.push(newClient);
       },
@@ -122,21 +116,16 @@ export class ClientComponent implements OnInit {
   createEquipment(clientId: bigint){
     let newEquipment: Equipment = {
       id: null,
-      type: null,
-      brand: "KM",
-      model: "bizhub",
-      code: null,
+      type: 'type',
+      brand: 'brand',
+      model: 'model',
+      code: 'internal code',
       clientId: clientId
     };
 
     this.clientService.saveEquipment(newEquipment).subscribe(
       result=>{
         newEquipment.id=result.id;
-        newEquipment.type=result.type;
-        newEquipment.brand=result.brand;
-        newEquipment.model=result.model;
-        newEquipment.code=result.code;
-        newEquipment.clientId=result.clientId;
 
         this.equipmentList.push(newEquipment);
       },

@@ -16,13 +16,14 @@ import java.util.List;
 @RequestMapping(value="/api/equipment")
 public class EquipmentController {
 
+
 	@SuppressWarnings({"UnusedDeclaration"})
 	@Autowired
 	private EquipmentService equipmentService;
 
 	@GetMapping(value="/all")
-	public ResponseEntity<List<EquipmentDTO>> getEquipments(){
-		
+	public ResponseEntity<List<EquipmentDTO>> getAllEquipment(){
+
 		List<EquipmentDTO> equipmentDTOList = equipmentService.getAll();
 		if(equipmentDTOList.isEmpty()){
 	       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -36,6 +37,10 @@ public class EquipmentController {
 		return equipmentService.getEquipmentById(id);
 	}
 
+	@GetMapping("/byClient/{clientId}")
+	public List<EquipmentDTO> byClient(@PathVariable Long clientId) throws NullPointerException {
+	    return equipmentService.getEquipmentByClient(clientId);
+	}
 
 
 	@PostMapping
