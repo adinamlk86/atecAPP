@@ -9,6 +9,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {FormsModule} from "@angular/forms";
 import { EquipmentComponent } from './client/equipment/equipment.component';
 import { ClientTextFilterPipe } from './pipe/client-text-filter.pipe';
+import { NoticeComponent } from './notice/notice.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ClientTextFilterPipe } from './pipe/client-text-filter.pipe';
     NavigationComponent,
     EquipmentComponent,
     ClientTextFilterPipe,
+    NoticeComponent,
 
 
   ],
