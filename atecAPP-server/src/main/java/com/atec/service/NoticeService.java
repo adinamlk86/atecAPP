@@ -28,5 +28,18 @@ public class NoticeService {
         return mapper.toNoticeDTOs(dbNotice);
     }
 
+    public Notice add(NoticeDTO noticeDTO){
+
+        Notice newNotice =this.mapper.toNotice(noticeDTO);
+        this.repository.save(newNotice);
+
+        return newNotice;
+    }
+
+    public void delete(long id){
+        repository.deleteById(id);
+
+    }
+
 
 }

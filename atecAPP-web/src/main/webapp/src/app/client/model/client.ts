@@ -10,5 +10,5 @@ export interface Client {
   bank:string;
   iban:string;
   noOfEquipment:bigint;
-  equipmentList: Array<Equipment>;
+
 }

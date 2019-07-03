@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Client} from "../client/model/client";
 import {Equipment} from "../client/model/equipment";
+import {Notice} from "../notice/model/notice";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,8 @@ export class ClientService {
   private ALL_EQUIPMENT_URL = `${this.BASE_URL}/equipment/all`;
   private SAVE_EQUIPMENT_URL = `${this.BASE_URL}/equipment`;
   private DELETE_EQUIPMENT_URL = `${this.BASE_URL}/equipment/`;
+  private ALL_NOTICES_URL = `${this.BASE_URL}/notice/all`;
+  private SAVE_NOTICE_URL = `${this.BASE_URL}/notice`;
 
   constructor(private http: HttpClient) { }
 
@@ -50,4 +53,13 @@ export class ClientService {
     return this.http.delete(this.DELETE_EQUIPMENT_URL + equipmentId);
   }
 
+  getAllNotices(): Observable<Notice[]>{
+    return this.http.get<Notice[]>(this.ALL_NOTICES_URL);
+
+  }
+
+  postNotice(newNotice: Notice): Observable<Notice>{
+    return this.http.post<Notice>(this.SAVE_NOTICE_URL, newNotice);
+
+  }
 }

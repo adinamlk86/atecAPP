@@ -13,6 +13,7 @@ export class ClientComponent implements OnInit {
   clients: Client[] = [];
   selectedClient: Client;
   equipmentList: Equipment[] = [];
+  searchText: string;
 
   constructor(private clientService: ClientService) {
   }
@@ -44,8 +45,7 @@ export class ClientComponent implements OnInit {
       address: 'address',
       bank: 'bank',
       iban: 'account no',
-      noOfEquipment:null,
-      equipmentList: null
+      noOfEquipment:null
     };
 
     this.clientService.postClient(newClient).subscribe(
