@@ -1,4 +1,4 @@
-import {Equipment} from "./equipment";
+import {Equipment} from "../../equipment/model/equipment";
 
 export interface Client {
 

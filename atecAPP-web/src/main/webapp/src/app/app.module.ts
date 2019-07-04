@@ -7,7 +7,7 @@ import {ClientComponent} from './client/client.component';
 import {NavigationComponent} from './navigation/navigation.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {FormsModule} from "@angular/forms";
-import { EquipmentComponent } from './client/equipment/equipment.component';
+import { EquipmentComponent } from './equipment/equipment.component';
 import { ClientTextFilterPipe } from './pipe/client-text-filter.pipe';
 import { NoticeComponent } from './notice/notice.component';
 

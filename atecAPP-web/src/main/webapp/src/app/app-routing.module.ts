@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {ClientComponent} from "./client/client.component";
 import {NoticeComponent} from "./notice/notice.component";
+import {EquipmentComponent} from "./equipment/equipment.component";
 
 const routes: Routes = [
   {
@@ -10,7 +11,7 @@ const routes: Routes = [
   },
     {
       path:'equipment',
-      component: ClientComponent,
+      component: EquipmentComponent,
       pathMatch: 'full'
     },
     {

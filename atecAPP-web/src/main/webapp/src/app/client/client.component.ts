@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Client} from "./model/client";
 import {ClientService} from "../service/client.service";
-import {Equipment} from "./model/equipment";
+import {Equipment} from "../equipment/model/equipment";
 
 @Component({
   selector: 'app-client',
@@ -19,7 +19,7 @@ export class ClientComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAllEquipment();
+
 
   }
 
@@ -99,18 +99,6 @@ export class ClientComponent implements OnInit {
     );
   }
 
-  getAllEquipment() {
-    this.clientService.getAllEquipment().subscribe(
-      response => {
-
-        this.equipmentList = response;
-
-      },
-      error => {
-        alert("An error has occurred while getting equipment list!")
-      }
-    )
-  }
 
 
   createEquipment(clientId: bigint){
@@ -161,8 +149,6 @@ export class ClientComponent implements OnInit {
 
   }
 
-  selectAllEquipment(){
-    this.selectedClient = null;
-    this.getAllEquipment();
-  }
+
+
 }
