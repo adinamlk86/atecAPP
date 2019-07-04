@@ -1,15 +1,19 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
+import {AppRoutingModule} from "./app-routing.module";
+import {ReactiveFormsModule, FormsModule} from "@angular/forms";
+
+import { ClientTextFilterPipe } from './pipe/client-text-filter.pipe';
 
 import {AppComponent} from './app.component';
 import {ClientComponent} from './client/client.component';
 import {NavigationComponent} from './navigation/navigation.component';
-import {AppRoutingModule} from "./app-routing.module";
-import {FormsModule} from "@angular/forms";
 import { EquipmentComponent } from './equipment/equipment.component';
-import { ClientTextFilterPipe } from './pipe/client-text-filter.pipe';
 import { NoticeComponent } from './notice/notice.component';
+import { NewClientFormComponent } from './forms/new-client-form/new-client-form.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { NewEquipmentFormComponent } from './forms/new-equipment-form/new-equipment-form.component';
 
 
 @NgModule({
@@ -20,6 +24,9 @@ import { NoticeComponent } from './notice/notice.component';
     EquipmentComponent,
     ClientTextFilterPipe,
     NoticeComponent,
+    NewClientFormComponent,
+    WelcomePageComponent,
+    NewEquipmentFormComponent,
 
 
   ],
@@ -27,7 +34,8 @@ import { NoticeComponent } from './notice/notice.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [],

@@ -1,26 +1,14 @@
 <div class="container">
   <!-- Client menu -->
   <div class="row" style="margin-top:12px;">
-    <div class="col-md-8">
+    <div>
       <input type="text"
              [(ngModel)]="searchText"
              class="form-control"
-             style="width: 100%;"
+
              placeholder="Search clients...">
     </div>
-    <div class="col-md-4">
-      <button type="button"
-              (click)="createClient()"
-              class="btn btn-info pull-left"
-              style="margin-left:12px;"><i class="fa fa-plus"></i> New client
-      </button>
-      <button type="button"
-              (click)="createEquipment(selectedClient.id)"
-              [disabled]="selectedClient==null"
-              class="btn btn-primary pull-left"
-              style="margin-left:12px;"><i class="fa fa-plus"></i> New equipment
-      </button>
-    </div>
+
   </div>
   <!-- search bar result-->
   <div class="row">
@@ -59,23 +47,11 @@
 
     </div>
 
-    <!-- Equipment Panel -->
     <div class="col-md-9">
-      <div class="row">
-        <div class="col-md-12">
-          <h3 *ngIf="selectedClient!=null">{{selectedClient.name}}</h3>
-          <h2 *ngIf="selectedClient==null">Equipment list</h2>
-          <p *ngIf="this.equipmentList.length===0">Equipment list is empty.</p>
-        </div>
-      </div>
-      <div class="row">
-        <!-- equipment list -->
-        <app-equipment *ngFor="let equipment of equipmentList"
-                       [equipment]="equipment"
-                       (equipmentUpdated)="updateEquipment($event)"
-                       (equipmentDeleted)="deleteEquipment($event)"></app-equipment>
-
-      </div>
+      <app-new-client-form></app-new-client-form>
     </div>
+
+    <!-- Equipment Panel
+     -->
   </div>
 </div>

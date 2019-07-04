@@ -1,34 +1,53 @@
-<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-  <!--equipment card header-->
-  <div class="card-header">
-    <input type="text"
-           [(ngModel)]="equipment.model"
-           (change)="updateEquipment()"
-           class="input-label-lg"
-           maxlength="18" style="width: 80%"/>
-    <a (click)="deleteEquipment()" class="pull-right text-danger">
-      <i class="fas fa-trash-alt"></i>
-    </a>
-  </div>
-  <div class="card-body" style="padding: 8px; margin-top: 8px;">
-    <div>
-      <!-- title -->
-      <input type="text"
-             [(ngModel)]="equipment.brand"
-             (change)="updateEquipment()"
-             class="input-label-lg"
-             maxlength="18" style="width: 80%"
-      />
+<div class="container" style="padding-top: 5px">
 
+
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Equipment list</h2>
+      <p *ngIf="this.equipmentList.length===0">Equipment list is empty.</p>
     </div>
-    <!-- text -->
-    <textarea class="input-label"
-              style="width: 100%" rows="1"
-              [(ngModel)]="equipment.type"
-              (change)="updateEquipment()"></textarea>
-    <textarea class="input-label"
-              style="width: 100%" rows="1"
-              [(ngModel)]="equipment.code"
-              (change)="updateEquipment()"></textarea>
+    <!-- equipment list-->
+    <div *ngFor="let equipment of equipmentList" class="card text-white bg-info mb-3" style="max-width: 18rem;">
+      <!--equipment card header-->
+      <div class="card-header">
+        <label>
+          <input type="text"
+                 [(ngModel)]="equipment.model"
+                 (change)="updateEquipment(equipment)"
+                 class="input-label-lg"
+                 maxlength="18" style="width: 80%"/>
+        </label>
+        <a (click)="deleteEquipment(equipment)" class="pull-right text-danger">
+          <i class="fas fa-trash-alt"></i>
+        </a>
+      </div>
+      <div class="card-body" style="padding: 8px; margin-top: 8px;">
+        <div>
+          <!-- card title -->
+          <label>
+            <input type="text"
+                   [(ngModel)]="equipment.brand"
+                   (change)="updateEquipment(equipment)"
+                   class="input-label-lg"
+                   maxlength="18" style="width: 80%"
+            />
+          </label>
+
+        </div>
+        <!-- card content-->
+        <textarea class="input-label"
+                  style="width: 100%" rows="1"
+                  [(ngModel)]="equipment.type"
+                  (change)="updateEquipment(equipment)"></textarea>
+        <textarea class="input-label"
+                  style="width: 100%" rows="1"
+                  [(ngModel)]="equipment.code"
+                  (change)="updateEquipment(equipment)"></textarea>
+      </div>
+    </div>
   </div>
+  <div class="container" style="margin-top:12px;">
+    <app-new-equipment-form></app-new-equipment-form>
+  </div>
+
 </div>
