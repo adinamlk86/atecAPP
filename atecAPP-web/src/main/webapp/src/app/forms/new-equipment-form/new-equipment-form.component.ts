@@ -14,6 +14,7 @@ export class NewEquipmentFormComponent implements OnInit {
   equipmentList: Equipment[] = [];
   clients: Client[]=[];
   form: FormGroup;
+  show: boolean=false;
 
   constructor(private clientService: ClientService) {
   }
@@ -53,6 +54,11 @@ export class NewEquipmentFormComponent implements OnInit {
         alert("An error occurred while saving equipment.");
       }
     );
+  }
+
+  toggle() {
+    this.show = !this.show;
+
   }
 
 

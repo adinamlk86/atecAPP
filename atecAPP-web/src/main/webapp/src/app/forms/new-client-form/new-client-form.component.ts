@@ -10,6 +10,8 @@ import {ClientService} from "../../service/client.service";
 export class NewClientFormComponent implements OnInit {
 
   clients: Client[]=[];
+  show: boolean=false;
+
 
   constructor(private clientService: ClientService) { }
 
@@ -31,5 +33,9 @@ export class NewClientFormComponent implements OnInit {
         alert("An error has occurred while saving the client.");
       }
     );
+  }
+  toggle() {
+    this.show = !this.show;
+
   }
 }
