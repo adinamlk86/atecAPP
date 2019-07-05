@@ -19,6 +19,7 @@ import java.util.Optional;
 @Transactional
 public class EquipmentService {
 
+    @Autowired
     private ClientRepository clientRepository;
 
     @Autowired
@@ -57,16 +58,12 @@ public class EquipmentService {
     public List<EquipmentDTO> getEquipmentByClient(Long clientId) throws NullPointerException{
         List<Equipment> equipmentList = new ArrayList<>();
 
-        Client client = null;
-        try {
-            client = this.clientRepository.findById(clientId).orElseThrow(() -> {
+        Client client = this.clientRepository.findById(clientId).orElseThrow(() -> {
                  return new NullPointerException();});
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
 
         if(client!=null) {
-            equipmentList = this.equipmentRepository.findAllByClientId(client.getId());
+            equipmentList = this.equipmentRepository.findAllByClient_Id(client.getId());
         }
             List<EquipmentDTO> equipmentDTOList = this.mapper.toEquipmentDTOs(equipmentList);
 
