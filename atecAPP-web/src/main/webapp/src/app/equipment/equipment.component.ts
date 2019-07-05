@@ -10,9 +10,6 @@ import {Client} from "../client/model/client";
 })
 export class EquipmentComponent implements OnInit {
 
-  @Input() equipment: Equipment;
-  @Output() equipmentUpdated: EventEmitter<Equipment> = new EventEmitter<Equipment>();
-  @Output() equipmentDeleted: EventEmitter<Equipment> = new EventEmitter<Equipment>();
 
   equipmentList: Equipment[]=[];
   clients: Client[]=[];
@@ -36,14 +33,6 @@ export class EquipmentComponent implements OnInit {
       }
     )
   }
-  // updateEquipment(){
-  //
-  //   this.equipmentUpdated.emit(this.equipment);
-  // }
-  //
-  // deleteEquipment(){
-  //   this.equipmentDeleted.emit(this.equipment);
-  // }
 
   deleteEquipment(equipment: Equipment) {
     if (confirm("Are you sure you want to delete this equipment?")) {

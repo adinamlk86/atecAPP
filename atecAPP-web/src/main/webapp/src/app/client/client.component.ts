@@ -77,6 +77,31 @@ export class ClientComponent implements OnInit {
     );
   }
 
+  deleteEquipment(equipment: Equipment) {
+    if (confirm("Are you sure you want to delete this equipment?")) {
+      this.clientService.deleteEquipment(equipment.id).subscribe(
+        res => {
+          let indexOfNote = this.equipmentList.indexOf(equipment);
+          this.equipmentList.splice(indexOfNote, 1);
+        },
+        err => {
+          alert("An error has occurred deleting the equipment.");
+        }
+      );
+    }
+
+  }
+
+  updateEquipment(updatedEquipment: Equipment) {
+    this.clientService.saveEquipment(updatedEquipment).subscribe(
+      res => {
+      },
+      err => {
+        alert("An error occurred while saving the equipment.");
+      }
+    );
+
+  }
 
 
 
