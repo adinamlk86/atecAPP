@@ -1,5 +1,3 @@
-import {Equipment} from "./equipment";
-
 export interface Client {
 
   id:bigint;

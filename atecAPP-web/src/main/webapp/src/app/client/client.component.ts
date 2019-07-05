@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Client} from "./model/client";
 import {ClientService} from "../service/client.service";
-import {Equipment} from "./model/equipment";
+import {Equipment} from "../equipment/model/equipment";
 
 @Component({
   selector: 'app-client',
@@ -19,7 +19,7 @@ export class ClientComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAllEquipment();
+
 
   }
 
@@ -36,29 +36,7 @@ export class ClientComponent implements OnInit {
   }
 
 
-  createClient() {
-    let newClient: Client = {
-      id: null,
-      name: 'new client',
-      vatCode: 'vat code',
-      registrationCode: 'reg code',
-      address: 'address',
-      bank: 'bank',
-      iban: 'account no',
-      noOfEquipment:null
-    };
 
-    this.clientService.postClient(newClient).subscribe(
-      result => {
-        newClient.id = result.id;
-
-        this.clients.push(newClient);
-      },
-      error => {
-        alert("An error has occurred while saving the client.");
-      }
-    );
-  }
 
 
   updateClient(updatedClient: Client) {
@@ -99,70 +77,9 @@ export class ClientComponent implements OnInit {
     );
   }
 
-  getAllEquipment() {
-    this.clientService.getAllEquipment().subscribe(
-      response => {
-
-        this.equipmentList = response;
-
-      },
-      error => {
-        alert("An error has occurred while getting equipment list!")
-      }
-    )
-  }
 
 
-  createEquipment(clientId: bigint){
-    let newEquipment: Equipment = {
-      id: null,
-      type: 'type',
-      brand: 'brand',
-      model: 'model',
-      code: 'internal code',
-      clientId: clientId
-    };
 
-    this.clientService.saveEquipment(newEquipment).subscribe(
-      result=>{
-        newEquipment.id=result.id;
 
-        this.equipmentList.push(newEquipment);
-      },
-      error => {
-        alert("An error occurred while saving equipment.");
-      }
-    );
-  }
 
-  deleteEquipment(equipment: Equipment) {
-    if (confirm("Are you sure you want to delete this equipment?")) {
-      this.clientService.deleteEquipment(equipment.id).subscribe(
-        res => {
-          let indexOfNote = this.equipmentList.indexOf(equipment);
-          this.equipmentList.splice(indexOfNote, 1);
-        },
-        err => {
-          alert("An error has occurred deleting the equipment.");
-        }
-      );
-    }
-
-  }
-
-  updateEquipment(updatedEquipment: Equipment) {
-    this.clientService.saveEquipment(updatedEquipment).subscribe(
-      res => {
-      },
-      err => {
-        alert("An error occurred while saving the equipment.");
-      }
-    );
-
-  }
-
-  selectAllEquipment(){
-    this.selectedClient = null;
-    this.getAllEquipment();
-  }
 }

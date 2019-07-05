@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="jumbotron">
+    <h2>Add new equipment</h2>
+    <form #frm="ngForm" (ngSubmit)="createEquipment(frm)">
+
+      <div class="form-group">
+        <label for="type">
+          Type:
+        </label>
+        <input type="text"
+               class="form-control"
+               name="type"
+               ngModel=""
+               required>
+      </div>
+
+
+      <div class="form-group">
+        <label for="brand">
+          Brand:
+        </label>
+        <input type="text"
+               class="form-control"
+               name="brand"
+               ngModel="">
+      </div>
+
+      <div class="form-group">
+        <label for="model">
+          Model:
+        </label>
+        <input type="text"
+               class="form-control"
+               name="model"
+               ngModel="">
+      </div>
+
+      <div class="form-group">
+        <label>
+          Code:
+        </label>
+        <input type="text"
+               class="form-control"
+               name="code"
+               ngModel="">
+      </div>
+
+      <div class="form-group">
+        <label for="clientId">
+          Client:
+        </label>
+        <select class="form-control"  id="clientId"
+                required
+                ngModel="" name="client">
+          <option *ngFor="let client of clients" [value]="client">{{client.name}}</option>
+        </select>
+      </div>
+
+      <div style="text-align: center">
+        <button type="submit" name="button"
+                class="btn btn-info pull-right"
+                style="margin-left:12px;"><i class="fa fa-plus"></i> New equipment
+        </button>
+      </div>
+
+
+    </form>
+
+
+  </div>
+</div>
