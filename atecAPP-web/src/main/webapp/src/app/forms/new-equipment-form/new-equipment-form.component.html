@@ -1,7 +1,12 @@
 <div class="container-fluid">
   <div class="jumbotron">
-    <h2>Add New Equipment</h2>
 
+    <button (click)="toggle()" id="bt" class="btn btn-info ">
+      <i class="fa fa-cog"></i> Add equipment
+    </button>
+    <h2></h2>
+<ng-container *ngIf="show">
+  <h2>Add new equipment</h2>
     <form novalidate [formGroup]="form" (ngSubmit)="createEquipment()">
 
       <div class="form-group">
@@ -59,6 +64,6 @@
       </div>
 
     </form>
-
+</ng-container>
   </div>
 </div>
