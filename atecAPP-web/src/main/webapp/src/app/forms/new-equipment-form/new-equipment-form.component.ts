@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {FormGroup, FormControl} from "@angular/forms";
 import {Equipment} from "../../equipment/model/equipment";
 import {ClientService} from "../../service/client.service";
 import {Client} from "../../client/model/client";
@@ -12,25 +13,41 @@ export class NewEquipmentFormComponent implements OnInit {
 
   equipmentList: Equipment[] = [];
   clients: Client[]=[];
-
+  form: FormGroup;
 
   constructor(private clientService: ClientService) {
   }
 
   ngOnInit() {
 
+    this.getClients();
+    this.form = new FormGroup({
+      type: new FormControl(''),
+      brand:new FormControl(''),
+      model:new FormControl(''),
+    code:new FormControl(''),
+    clientId:new FormControl('')
+    })
   }
 
-  createEquipment(form){
+  getClients(){
+    this.clientService.getAllClients().subscribe(
+      response => {
+        this.clients = response;
+      },
+      error => {
+        alert("An error has occurred!")
+      }
+    );
+  }
 
-    let newEquipment: Equipment;
-    newEquipment = form.value;
+  createEquipment(){
 
-    this.clientService.saveEquipment(newEquipment).subscribe(
+    this.clientService.saveEquipment(this.form.value).subscribe(
       result=>{
-        newEquipment.id=result.id;
+        this.form.value.id=result.id;
 
-        this.equipmentList.push(newEquipment);
+        this.equipmentList.push(this.form.value);
       },
       error => {
         alert("An error occurred while saving equipment.");
