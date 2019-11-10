@@ -1,11 +1,7 @@
 <div class="row" style="margin-top: 28px;">
   <div class="col-md-12">
     <div class="col-md-6">
-      <button type="button"
-              (click)="createNotice()"
-              class="btn btn-info pull-left"
-              style="margin-left:12px;"><i class="fa fa-plus"></i> Register new notice
-      </button>
+      <app-new-notice-form></app-new-notice-form>
 
     </div>
     <br>
@@ -15,17 +11,43 @@
       </a>
       <!-- Notice List -->
 
-      <a *ngFor="let notice of notices" class="list-group-item list-group-item-action">
-        <i class="fas"></i>&nbsp;
-        <input [(ngModel)]="notice.clientId" type="text" class="input-label"
-               style="width: 80%"/>
-        <input [(ngModel)]="notice.equipmentId" type="text" class="input-label" style="width: 80%"/>
+      <div *ngFor="let notice of notices" class="list-group-item list-group-item-action">
+        <!--notice header-->
+        <div class="card-header">
+          <label>
+            <input type="text"
+                   [(ngModel)]="notice.clientId"
+                   class="input-label-lg"
+                   maxlength="18" style="width: 80%"/>
+          </label>
+          <a (click)="deleteNotice(notice)" class="pull-right text-danger">
+            <i class="fas fa-trash-alt"></i>
+          </a>
+        </div>
+        <div class="card-body" style="padding: 8px; margin-top: 8px;">
+          <div>
+            <!-- card title -->
+            <label>
+              <input type="text"
+                     [(ngModel)]="notice.equipmentId"
+                     class="input-label-lg"
+                     maxlength="18" style="width: 80%"
+              />
+            </label>
 
-        <input [(ngModel)]="notice.description" type="text" class="input-label" style="width: 80%"/>
-        <input [(ngModel)]="notice.status" type="text" class="input-label" style="width: 80%"/>
-        <input [(ngModel)]="notice.registerDate" type="text" class="input-label" style="width: 80%"/>
+          </div>
+          <!-- card content-->
+          <textarea class="input-label"
+                    style="width: 100%" rows="1"
+                    [(ngModel)]="notice.description"></textarea>
+          <textarea class="input-label"
+                    style="width: 100%" rows="1"
+                    [(ngModel)]="notice.status"
+                    (change)="updateNotice(notice)"></textarea>
+          <div class="date" [(ngModel)]="notice.registerDate"></div>
+        </div>
 
-      </a>
+      </div>
 
     </div>
     <br>
@@ -33,3 +55,4 @@
     <br>
 
   </div>
+</div>

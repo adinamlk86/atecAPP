@@ -20,6 +20,7 @@ export class ClientService {
   private DELETE_EQUIPMENT_URL = `${this.BASE_URL}/equipment/`;
   private ALL_NOTICES_URL = `${this.BASE_URL}/notice/all`;
   private SAVE_NOTICE_URL = `${this.BASE_URL}/notice`;
+  private DELETE_NOTICE_URL = `${this.BASE_URL}/notice/`;
 
   constructor(private http: HttpClient) { }
 
@@ -61,5 +62,13 @@ export class ClientService {
   postNotice(newNotice: Notice): Observable<Notice>{
     return this.http.post<Notice>(this.SAVE_NOTICE_URL, newNotice);
 
+  }
+
+  deleteNotice(noticeId: bigint): Observable<any>{
+    return this.http.delete(this.DELETE_NOTICE_URL + noticeId);
+  }
+
+  saveNotice(notice: Notice): Observable<Notice>{
+    return this.http.post<Notice>(this.SAVE_NOTICE_URL, notice);
   }
 }

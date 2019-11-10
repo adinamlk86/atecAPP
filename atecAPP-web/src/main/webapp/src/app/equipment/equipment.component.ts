@@ -38,8 +38,8 @@ export class EquipmentComponent implements OnInit {
     if (confirm("Are you sure you want to delete this equipment?")) {
       this.clientService.deleteEquipment(equipment.id).subscribe(
         res => {
-          let indexOfNote = this.equipmentList.indexOf(equipment);
-          this.equipmentList.splice(indexOfNote, 1);
+          let index = this.equipmentList.indexOf(equipment);
+          this.equipmentList.splice(index, 1);
         },
         err => {
           alert("An error has occurred deleting the equipment.");

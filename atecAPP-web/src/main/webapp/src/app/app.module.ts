@@ -14,6 +14,7 @@ import { NoticeComponent } from './notice/notice.component';
 import { NewClientFormComponent } from './forms/new-client-form/new-client-form.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { NewEquipmentFormComponent } from './forms/new-equipment-form/new-equipment-form.component';
+import { NewNoticeFormComponent } from './forms/new-notice-form/new-notice-form.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { NewEquipmentFormComponent } from './forms/new-equipment-form/new-equipm
     NewClientFormComponent,
     WelcomePageComponent,
     NewEquipmentFormComponent,
+    NewNoticeFormComponent,
 
 
   ],

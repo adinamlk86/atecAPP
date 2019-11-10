@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ClientService} from "../service/client.service";
 import {Notice} from "./model/notice";
+import {Equipment} from "../equipment/model/equipment";
 
 @Component({
   selector: 'app-notice',
@@ -9,8 +10,10 @@ import {Notice} from "./model/notice";
 })
 export class NoticeComponent implements OnInit {
 
-  notices: Notice[] =[];
-  constructor(private clientService: ClientService) { }
+  notices: Notice[] = [];
+
+  constructor(private clientService: ClientService) {
+  }
 
   ngOnInit() {
     this.getAllNotices();
@@ -24,28 +27,32 @@ export class NoticeComponent implements OnInit {
       error => {
         alert("An error has occurred!")
       }
-    );  }
+    );
+  }
 
-  createNotice() {
-    let newNotice: Notice = {
-      id: null,
-      registerDate: new Date,
-      status: 'status',
-      description: 'description',
-      clientId: null,
-      equipmentId: null
+  deleteNotice(notice: Notice) {
+    if (confirm("Are you sure you want to delete this notice?")) {
+      this.clientService.deleteNotice(notice.id).subscribe(
+        result => {
+          let index = this.notices.indexOf(notice);
+          this.notices.splice(index, 1);
+        },
+        error => {
+          alert("An error has occurred deleting the notice.");
+        }
+      );
+    }
+  }
 
-    };
-
-    this.clientService.postNotice(newNotice).subscribe(
-      result => {
-        newNotice.id = result.id;
-
-        this.notices.push(newNotice);
+  updateNotice(updatedNotice: Notice) {
+    this.clientService.saveNotice(updatedNotice).subscribe(
+      res => {
       },
-      error => {
-        alert("An error has occurred while registering the new notice.");
+      err => {
+        alert("An error occurred while saving the equipment.");
       }
     );
   }
+
+
 }

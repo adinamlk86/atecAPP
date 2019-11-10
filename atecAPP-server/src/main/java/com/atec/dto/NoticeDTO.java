@@ -1,8 +1,5 @@
 package com.atec.dto;
 
-import com.atec.model.Client;
-import com.atec.model.Equipment;
-
 import java.util.Date;
 
 public class NoticeDTO {
@@ -11,8 +8,8 @@ public class NoticeDTO {
     private Date registerDate;
     private String status;
     private String description;
-    private Client client;
-    private Equipment equipment;
+    private String clientId;
+    private String equipmentId;
 
     public Long getId() {
         return id;
@@ -46,19 +43,19 @@ public class NoticeDTO {
         this.description = description;
     }
 
-    public Client getClient() {
-        return client;
+    public String getClientId() {
+        return clientId;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
     }
 
-    public Equipment getEquipment() {
-        return equipment;
+    public String getEquipmentId() {
+        return equipmentId;
     }
 
-    public void setEquipment(Equipment equipment) {
-        this.equipment = equipment;
+    public void setEquipmentId(String equipmentId) {
+        this.equipmentId = equipmentId;
     }
 }
